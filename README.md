@@ -72,7 +72,7 @@ python main.py
 @Inproceedings{
     Jin2021MWCS,
     title={Harmonious Semantic Line Detection via Maximal Weight Clique Selection},
-    author={Dongkwon Jin, Wonhui Park, Seong-Gyun Jeong, and Chang-Su Kim},
+    author={Jin, Dongkwon and Park, Wonhui and Jeong, Seong-Gyun and Kim, Chang-Su},
     booktitle={CVPR},
     year={2021}
 }
