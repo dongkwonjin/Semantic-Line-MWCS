@@ -6,7 +6,7 @@
 ![Overview](Overview.png)
 -->
 
-Official pytorch implementation for **"Harmonious Semantic Line Detection via Maximal Weight Clique Selection"** 
+Official implementation for **"Harmonious Semantic Line Detection via Maximal Weight Clique Selection"** 
 [[paper]](https://arxiv.org/pdf/2104.06903.pdf) [[supp]](http://mcl.korea.ac.kr/~dkjin/cvpr2021/04585-supp.pdf) [[video]](http://mcl.korea.ac.kr/dkjin_cvpr2021/).
 
 <!--
