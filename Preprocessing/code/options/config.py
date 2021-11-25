@@ -23,7 +23,7 @@ class Config(object):
 
     def settings_for_path(self):
         self.dir = dict()
-        self.dir['head'] = '/media/dkjin/4fefb28c-5de9-4abd-a935-aa2d61392048/'
+        self.dir['head'] = '--system root'  # need to modify
         self.dir['proj'] = os.path.dirname(os.getcwd()) + '/'
 
         self.settings_dataset_path()
@@ -35,9 +35,9 @@ class Config(object):
         self.datalist_mode = 'train'  # ['train', 'test', 'val']
 
         self.dir['dataset'] = dict()
-        self.dir['dataset']['SEL'] = self.dir['head'] + 'Github/Semantic-Line-DRM/Dataset/SEL/'
-        self.dir['dataset']['SEL_Hard'] = self.dir['head'] + 'Github/Semantic-Line-DRM/Dataset/SEL_Hard/'
-        self.dir['dataset']['SL5K'] = self.dir['head'] + 'Work/CVPR2021/Semantic_line_detection/Project_final/P04_Dataset/sl5k/'
+        self.dir['preprocess']['SEL'] = self.dir['head'] + '--preprocessed_data root /SEL/pickle/'  # need to modify
+        self.dir['preprocess']['SEL_Hard'] = '--preprocessed_data root /SEL_Hard/pickle/'  # need to modify
+        self.dir['preprocess']['SL5K'] = self.dir['head'] + '--preprocessed_data root /SL5K/pickle/'  # need to modify
         self.dir['dataset']['SEL_img'] = self.dir['dataset']['SEL'] + 'ICCV2017_JTLEE_images/'
         self.dir['dataset']['SEL_Hard_img'] = self.dir['dataset']['SEL_Hard'] + 'images/'
         self.dir['dataset']['SL5K_img'] = self.dir['dataset']['SL5K']
