@@ -31,9 +31,9 @@ Download repository:
 
 ### Instruction
 
-1. Download [preprocessed data](https://drive.google.com/file/d/1DKXr7shuThxHtZNTqzW4D9matq_NWGZM/view?usp=sharing) for SEL, SEL_Hard, and NKL(SL5K) datasets to ```root/```. You can download ```SEL``` and ```SEL_Hard``` datasets in [here](https://github.com/dongkwonjin/Semantic-Line-DRM). ```NKL``` dataset is provided in [here](https://kaizhao.net/nkl).
+1. Download [preprocessed data](https://drive.google.com/file/d/1DKXr7shuThxHtZNTqzW4D9matq_NWGZM/view?usp=sharing) for SEL, SEL_Hard, and NKL(SL5K) datasets to ```root/Preprocessing/```. You can download ```SEL``` and ```SEL_Hard``` datasets in [here](https://github.com/dongkwonjin/Semantic-Line-DRM). ```NKL``` dataset is provided in [here](https://kaizhao.net/nkl).
 
-2. Download our [model parameters](https://drive.google.com/file/d/1o64ilwfJhpCaIx-VYIyTFU4yYlwsL7g3/view?usp=sharing) to ```root/``` if you want to get the performance of the paper.
+2. Download our [model parameters](https://drive.google.com/file/d/1o64ilwfJhpCaIx-VYIyTFU4yYlwsL7g3/view?usp=sharing) to ```root/Modeling/``` if you want to get the performance of the paper.
 
 
 3. Edit `config.py`. Please modify ```dataset_dir``` and ```paper_weight_dir```. If you want to get the performance of the paper, please input ```run_mode``` to 'test_paper'.
