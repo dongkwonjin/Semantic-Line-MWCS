@@ -31,7 +31,7 @@ Download repository:
 
 ### Instruction
 
-1. Download preprocessed data for SEL, SEL_Hard, and NKL(SL5K) datasets to ```root/```. You can download ```SEL``` and ```SEL_Hard``` datasets in here. ```NKL``` dataset is provided in here.
+1. Download preprocessed data for SEL, SEL_Hard, and NKL(SL5K) datasets to ```root/```. You can download ```SEL``` and ```SEL_Hard``` datasets in here. ```NKL``` dataset is provided in [here](https://kaizhao.net/nkl).
 
 |        Dataset      |            Custom          |      Original path     |
 |:-------------------:|:--------------------------:|:----------------------:|
