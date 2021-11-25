@@ -31,7 +31,7 @@ Download repository:
 
 ### Instruction
 
-1. Download preprocessed data for SEL, SEL_Hard, and NKL(SL5K) datasets to ```root/```. You can download ```SEL``` and ```SEL_Hard``` datasets in [here](https://github.com/dongkwonjin/Semantic-Line-DRM). ```NKL``` dataset is provided in [here](https://kaizhao.net/nkl).
+1. Download [preprocessed data](https://drive.google.com/file/d/1DKXr7shuThxHtZNTqzW4D9matq_NWGZM/view?usp=sharing) for SEL, SEL_Hard, and NKL(SL5K) datasets to ```root/```. You can download ```SEL``` and ```SEL_Hard``` datasets in [here](https://github.com/dongkwonjin/Semantic-Line-DRM). ```NKL``` dataset is provided in [here](https://kaizhao.net/nkl).
 
 2. Download our model parameters to ```root/``` if you want to get the performance of the paper.
 
