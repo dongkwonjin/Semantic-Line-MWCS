@@ -29,10 +29,6 @@ def main():
     # Config
     cfg = Config()
 
-    # GPU setting
-    os.environ["CUDA_VISIBLE_DEVICES"] = cfg.gpu_id
-    torch.backends.cudnn.deterministic = True
-
     # prepare
     dict_DB = dict()
     dict_DB = prepare_visualization(cfg, dict_DB)
