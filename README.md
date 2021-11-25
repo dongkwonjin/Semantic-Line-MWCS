@@ -33,15 +33,7 @@ Download repository:
 
 1. Download preprocessed data for SEL, SEL_Hard, and NKL(SL5K) datasets to ```root/```. You can download ```SEL``` and ```SEL_Hard``` datasets in [here](https://github.com/dongkwonjin/Semantic-Line-DRM). ```NKL``` dataset is provided in [here](https://kaizhao.net/nkl).
 
-
-2. Download our model parameters to ```root/(task_folder_name)/``` if you want to get the performance of the paper.
-
-|                 Task                 |     Model parameters     |
-|:------------------------------------:|:------------------------:|
-|        Semantic line detection       |        [Download](https://drive.google.com/file/d/18-T-gKj0x5QtOhauXVRAgLq3quMqxiKB/view?usp=sharing)        |
-|   Dominant parallel line detection   |        [Download](https://drive.google.com/file/d/1r3LVK8FaNI4TDjVewJwG64QAsTB7wEeF/view?usp=sharing)        |
-|  Reflection symmetry axis detection  |        [Download](https://drive.google.com/file/d/1pfo7fYMZe8kFOXnLOS5DY8WrvlsikWth/view?usp=sharing)        |
-
+2. Download our model parameters to ```root/``` if you want to get the performance of the paper.
 
 
 3. Edit `config.py`. Please modify ```dataset_dir``` and ```paper_weight_dir```. If you want to get the performance of the paper, please input ```run_mode``` to 'test_paper'.
