@@ -40,7 +40,7 @@ Download repository:
 
 4. Run with 
 ```
-cd Semantic-Line-MWCS-master/(task_folder_name)/(model_folder_name)/code/
+cd Semantic-Line-MWCS-master/(Modeling or Prerpocessing)/(..)/code/
 python main.py
 ```
 
