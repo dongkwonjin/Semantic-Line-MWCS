@@ -33,17 +33,12 @@ Download repository:
 
 To be released.
 
-<!--
 1. Download the following datasets to ```root/```. ```SEL``` and ```SEL_Hard``` are datasets for semantic line detection. Others are datasets for applications. We obtain the edge detection results in  ```edge``` folder, by employing [HED algorithm](https://github.com/sniklaus/pytorch-hed).
 
 |        Dataset      |            Custom          |      Original path     |
 |:-------------------:|:--------------------------:|:----------------------:|
 |          SEL        |          [Download](https://drive.google.com/file/d/1K_lc284Mie-i3o4jEHF4dhObqOS_ITLc/view?usp=sharing)        |          [here](https://github.com/dongkwonjin/Semantic-Line-SLNet)        |
 |       SEL_Hard      |          [Download](https://drive.google.com/file/d/1tsSlT7in6BdPV5SfvVR4qCEdOYA05zAz/view?usp=sharing)        |                        |
-|    AVA landscape    |          [Download](https://drive.google.com/file/d/1RTqOQ7-JCvcKJncwQ-lo-i1svev9xyrw/view?usp=sharing)        |          [here](https://faculty.ist.psu.edu/zzhou/projects/vpdetection/)        |
-|         ICCV        |          [Download](https://drive.google.com/file/d/1Tq5nriVoQbL7thHXSVcBY9gPrX2DlCHJ/view?usp=sharing)        |          [here](https://sites.google.com/view/symcomp17/)        |
-|          NYU        |          [Download](https://drive.google.com/file/d/1G71Yspg1T-BkffxaoxDwpvlvad8IuHy2/view?usp=sharing)        |          [here](https://symmetry.cs.nyu.edu/)        |
-|       SYM_Hard      |          [Download](https://drive.google.com/file/d/1dydxRGN7UsfFcg6tzNzrm_o0WJZEEKP8/view?usp=sharing)        |                        |
 
 
 2. Download our model parameters to ```root/(task_folder_name)/``` if you want to get the performance of the paper.
@@ -60,10 +55,9 @@ To be released.
 
 4. Run with 
 ```
-cd Semantic-Line-DRM-master/(task_folder_name)/(model_folder_name)/code/
+cd Semantic-Line-MWCS-master/(task_folder_name)/(model_folder_name)/code/
 python main.py
 ```
--->
 
 ### Reference
 ```
