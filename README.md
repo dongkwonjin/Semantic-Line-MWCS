@@ -36,7 +36,7 @@ Download repository:
 2. Download our [model parameters](https://drive.google.com/file/d/1o64ilwfJhpCaIx-VYIyTFU4yYlwsL7g3/view?usp=sharing) to ```root/Modeling/``` if you want to get the performance of the paper.
 
 
-3. Edit `config.py`. Please modify the ```settings for path``` in the script file. Also, if you want to get the performance of the paper, please input ```run_mode``` to 'test_paper'.
+3. Edit `config.py`. Please modify ```settings for path``` in the script file. Also, if you want to get the performance of the paper, please input ```run_mode``` to 'test_paper'.
 
 4. Run with 
 ```
