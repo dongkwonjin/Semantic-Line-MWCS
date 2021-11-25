@@ -11,18 +11,18 @@ Official implementation for **"Harmonious Semantic Line Detection via Maximal We
 
 <!--
 ### Requirements
-- PyTorch 1.3.1
-- CUDA 10.0
-- CuDNN 7.6.5
-- python 3.6
+- PyTorch >= 1.3.1
+- CUDA >= 10.0
+- CuDNN >= 7.6.5
+- python >= 3.6
 
 ### Installation
 Create conda environment:
 ```
-    $ conda create -n DRM python=3.6 anaconda
-    $ conda activate DRM
+    $ conda create -n MWCS python=3.6 anaconda
+    $ conda activate MWCS
     $ pip install opencv-python==3.4.2.16
-    $ conda install pytorch==1.3.1 torchvision cudatoolkit=10.0 -c pytorch
+    $ conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.1 -c pytorch
 ```
 
 Download repository:
