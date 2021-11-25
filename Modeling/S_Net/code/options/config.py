@@ -26,28 +26,28 @@ class Config(object):
 
     def settings_for_path(self):
         self.dir = dict()
-        self.dir['head'] = '/media/dkjin/4fefb28c-5de9-4abd-a935-aa2d61392048/'
+        self.dir['head'] = '--system root'  # need to modify
         self.dir['proj'] = os.path.dirname(os.getcwd()) + '/'
         self.dir['preprocess'] = dict()
 
-        self.dir['preprocess']['SEL'] = self.dir['head'] + 'Work/CVPR2021/Semantic_line_detection/Project_final/P01_Preprocess/E04_V03_gtline_hough/output_train_v2/pickle/'
-        self.dir['preprocess']['SEL_Hard'] = self.dir['preprocess']['SEL']
-        self.dir['preprocess']['SL5K'] = self.dir['head'] + 'Work/CVPR2021/Semantic_line_detection/Project_final/P01_Preprocess/E05_V02_sl5k_gtline_hough/output_train_v4/pickle/'
+        self.dir['preprocess']['SEL'] = self.dir['head'] + '--preprocessed_data root /SEL/pickle/'  # need to modify
+        self.dir['preprocess']['SEL_Hard'] = '--preprocessed_data root /SEL_Hard/pickle/'  # need to modify
+        self.dir['preprocess']['SL5K'] = self.dir['head'] + '--preprocessed_data root /SL5K/pickle/'  # need to modify
 
         self.settings_dataset_path()
 
         self.dir['out'] = self.dir['proj'] + 'output_snet_{}/'.format(self.dataset_name)
         self.dir['weight'] = self.dir['out'] + 'train/weight/'
-        self.dir['paper_weight'] = self.dir['head'] + 'Work/CVPR2021/Github/Semantic_line_detection/paper_weight/'
+        self.dir['paper_weight'] = self.dir['head'] + '--paper_weight root'  # need to modify
 
 
     def settings_dataset_path(self):
         self.dataset_name = 'SEL'  # ['SEL', 'SEL_Hard', 'SL5K']  # SL5K --> Nankai
 
         self.dir['dataset'] = dict()
-        self.dir['dataset']['SEL'] = self.dir['head'] + 'Github/Semantic-Line-DRM/Dataset/SEL/'
-        self.dir['dataset']['SEL_Hard'] = self.dir['head'] + 'Github/Semantic-Line-DRM/Dataset/SEL_Hard/'
-        self.dir['dataset']['SL5K'] = self.dir['head'] + 'Work/CVPR2021/Semantic_line_detection/Project_final/P04_Dataset/sl5k/'
+        self.dir['dataset']['SEL'] = self.dir['head'] + '--dataset root /SEL/'
+        self.dir['dataset']['SEL_Hard'] = self.dir['head'] + '--dataset root /SEL_Hard/'
+        self.dir['dataset']['SL5K'] = self.dir['head'] + '--dataset root /SL5K/'
         self.dir['dataset']['SEL_img'] = self.dir['dataset']['SEL'] + 'ICCV2017_JTLEE_images/'
         self.dir['dataset']['SEL_Hard_img'] = self.dir['dataset']['SEL_Hard'] + 'images/'
         self.dir['dataset']['SL5K_img'] = self.dir['dataset']['SL5K']
