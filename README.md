@@ -31,8 +31,6 @@ Download repository:
 
 ### Instruction
 
-To be released.
-
 1. Download preprocessed data for SEL, SEL_Hard, and NKL(SL5K) datasets to ```root/```. ```SEL``` and ```SEL_Hard``` are datasets for semantic line detection. Others are datasets for applications. We obtain the edge detection results in  ```edge``` folder, by employing [HED algorithm](https://github.com/sniklaus/pytorch-hed).
 
 |        Dataset      |            Custom          |      Original path     |
