@@ -90,8 +90,8 @@ class Model(nn.Module):
 
         return line_feat
 
-    def selection_and_removal(self, score):
-        idx = torch.sort(score, descending=True)[1][:, 0]
+    def selection_and_removal(self, prob):
+        idx = torch.sort(prob, descending=True)[1][:, 0]
 
         a_idx, d_idx = (self.hough_space_idx == idx[:, 0]).nonzero()[0]
 
@@ -124,7 +124,7 @@ class Model(nn.Module):
         cluster['center_idx'] = idx[:, 0]
         cluster['cluster_idx'] = region_idx
 
-        return mask, cluster, score[0, 0, idx[:, 0]]
+        return mask, cluster, prob[0, 0, idx[:, 0]]
 
     def initialize(self):
         self.center_mask = torch.ones((1, 1, self.c_num)).cuda()
@@ -142,9 +142,9 @@ class Model(nn.Module):
         l_feat2 = self.extract_line_feat(sq_feat2, self.sf[1])
 
         l_feat = torch.cat((l_feat1, l_feat2), dim=1)  # [b, c', n] -> [b, 2c', n]
-        score = self.squeeze(l_feat)  # [b, 2c', n] -> [b, 1, n]
+        prob = self.squeeze(l_feat)  # [b, 2c', n] -> [b, 1, n]
 
-        return {'score': score,
+        return {'prob': prob,
                 'l_feat': l_feat}
 
 

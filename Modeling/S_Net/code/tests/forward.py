@@ -22,19 +22,19 @@ class Forward_Model(object):
 
         model.initialize()
         out = model.forward_for_cls(img, is_training=False)
-        score = out['score'].clone()
+        prob = out['prob'].clone()
 
         for i in range(self.cfg.max_iter):
 
             # Clustering
-            score_temp = score * model.visit_mask
-            cluster_mask, cluster, max_score = model.selection_and_removal(score_temp)
+            prob_temp = prob * model.visit_mask
+            cluster_mask, cluster, max_prob = model.selection_and_removal(prob_temp)
 
             center_idx = cluster['center_idx']
             cluster_idx = cluster['cluster_idx']
 
-            if self.cfg.constrain_max_score == True:
-                if i >= 2 and max_score < 0.7:
+            if self.cfg.constrain_max_prob == True:
+                if i >= 2 and max_prob < 0.7:
                     break
 
             out_temp['center_idx'] = torch.cat((out_temp['center_idx'], center_idx), dim=0)
@@ -42,7 +42,7 @@ class Forward_Model(object):
             model.center_mask[:, :, center_idx] = 0
             model.visit_mask[:, :, cluster_idx] = 0
 
-        out_temp['score'] = score
+        out_temp['prob'] = prob
         out_temp['l_feat'] = out['l_feat']
         return out_temp
 

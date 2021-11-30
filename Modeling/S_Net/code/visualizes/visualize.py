@@ -30,7 +30,7 @@ class Visualize_cv(object):
         self.center = np.array(self.cfg.center_pt)
         self.max_dist = self.cfg.max_dist
         self.top_k = 20
-        self.minimum_score = 0.5
+        self.minimum_prob = 0.5
         # load
         self.candidates = load_pickle(self.cfg.dir['preprocess'][self.cfg.dataset_name] + 'candidates')
         self.cand_angle = to_tensor(load_pickle(self.cfg.dir['preprocess'][self.cfg.dataset_name] + 'angle'))
@@ -104,24 +104,24 @@ class Visualize_cv(object):
         self.update_image(batch['img'][0])
         self.update_image_name(batch['img_name'][0])
 
-        line_pts = {'out': [], 'out_score': [], 'out_mask': [], 'out_center': [], 'out_pos': [],
+        line_pts = {'out': [], 'out_prob': [], 'out_mask': [], 'out_center': [], 'out_pos': [],
                     'gt_train': [], 'gt': []}
 
 
 
-        # out high scored line
-        idx_score = to_np((out['score'][0] > self.minimum_score).nonzero()[:, 1])
-        line_pts['out_score'] = self.candidates[idx_score]
+        # out high probability line
+        idx_prob = to_np((out['prob'][0] > self.minimum_prob).nonzero()[:, 1])
+        line_pts['out_prob'] = self.candidates[idx_prob]
 
         # out hough line
-        if idx_score.shape[0] != 0:
-            line_pts['out'] = self.process_for_reg(idx_score,
-                                                   out['offset'][0][idx_score, 0],
-                                                   out['offset'][0][idx_score, 1])
+        if idx_prob.shape[0] != 0:
+            line_pts['out'] = self.process_for_reg(idx_prob,
+                                                   out['offset'][0][idx_prob, 0],
+                                                   out['offset'][0][idx_prob, 1])
         else:
             line_pts['out'] = np.array([])
 
-        idx_pos = to_np((batch['score'] != 0).nonzero()[:, 1])
+        idx_pos = to_np((batch['prob'] != 0).nonzero()[:, 1])
         if idx_pos.shape[0] != 0:
             line_pts['out_pos'] = self.process_for_reg(idx_pos,
                                                    out['offset'][0][idx_pos, 0],
@@ -148,7 +148,7 @@ class Visualize_cv(object):
         # draw lines
 
         self.draw_lines_cv(data=line_pts['out'], name='out', color=(255, 0, 0))
-        self.draw_lines_cv(data=line_pts['out_score'], name='out_score')
+        self.draw_lines_cv(data=line_pts['out_prob'], name='out_prob')
         self.draw_lines_cv(data=line_pts['out_pos'], name='out_pos')
         self.draw_lines_cv(data=line_pts['gt'], name='gt')
         self.draw_lines_cv(data=line_pts['gt_train'], name='gt_train', color=(255, 0, 0))
@@ -156,21 +156,21 @@ class Visualize_cv(object):
         # save result
         self.display_saveimg(dir_name=self.cfg.dir['out'] + 'train/display/',
                              file_name=str(idx) + '.jpg',
-                             list=['img', 'out_score', 'out', 'out_pos', 'gt_train', 'gt'])
+                             list=['img', 'out_prob', 'out', 'out_pos', 'gt_train', 'gt'])
 
     def display_for_test(self, out, mul_gt, idx, mode, dataset_name):
 
-        line_pts = {'out': [], 'out_score': [], 'out_reg': [], 'out_mask': [], 'gt': []}
+        line_pts = {'out': [], 'out_prob': [], 'out_reg': [], 'out_mask': [], 'gt': []}
 
-        # high score line
-        idx_score = (out['score'][0] > self.minimum_score).nonzero()[:, 1]
-        idx_score = to_np(idx_score)
-        line_pts['out_score'] = self.candidates[idx_score]
+        # high prob line
+        idx_prob = (out['prob'][0] > self.minimum_prob).nonzero()[:, 1]
+        idx_prob = to_np(idx_prob)
+        line_pts['out_prob'] = self.candidates[idx_prob]
 
         # out hough line
 
         # draw lines
-        self.draw_lines_cv(data=line_pts['out_score'], name='out_score')
+        self.draw_lines_cv(data=line_pts['out_prob'], name='out_prob')
         self.draw_lines_cv(data=out['out_pts_cls'], name='out_cls')
         self.draw_lines_cv(data=out['out_pts_reg'], name='out_reg')
         self.draw_lines_cv(data=np.expand_dims(out['out_pts_cls'][0], 0), name='out_cls', ref_name='out_cls', color=(0, 255, 0))
@@ -179,7 +179,7 @@ class Visualize_cv(object):
 
         self.display_saveimg(dir_name=self.cfg.dir['out'] + mode + '_' + dataset_name + '/display/',
                              file_name=str(idx) + '.jpg',
-                             list=['img', 'out_score', 'out_cls', 'out_reg', 'gt'])
+                             list=['img', 'out_prob', 'out_cls', 'out_reg', 'gt'])
 
     def convert_to_line(self, angle, dist):
         angle = to_np2(angle)

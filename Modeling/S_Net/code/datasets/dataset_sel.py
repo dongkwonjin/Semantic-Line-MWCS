@@ -88,24 +88,24 @@ class Train_Dataset_SEL(Dataset):
         # mul line
         line_num = len(mul_data['region_idx'])
 
-        # score
-        score = np.zeros(self.c_num, dtype=np.float32)
+        # prob
+        prob = np.zeros(self.c_num, dtype=np.float32)
         offset = np.zeros((self.c_num, 2), dtype=np.float32)
 
         for i in range(line_num):
 
             pos_idx = mul_data['region_idx'][i]
 
-            # score
+            # prob
             if self.cfg.gaussian_blur == True:
                 diff_idx = mul_data['diff_idx'][i]
 
                 # gaussian weight
                 weight = np.exp(-1 * (np.square(diff_idx)[:, 0] / (2 * self.sigma_a) + np.square(diff_idx)[:, 1] / (2 * self.sigma_d)))
                 weight /= np.max(weight)
-                score[pos_idx] = np.maximum(score[pos_idx], weight)
+                prob[pos_idx] = np.maximum(prob[pos_idx], weight)
             else:
-                score[pos_idx] = 1
+                prob[pos_idx] = 1
 
             # offset
             offset[pos_idx, 0] = mul_data['angle_offset'][i]
@@ -118,7 +118,7 @@ class Train_Dataset_SEL(Dataset):
         a_idx = np.array(mul_data['angle_idx'])
         d_idx = np.array(mul_data['dist_idx'])
 
-        return score, gtlines, a_idx, d_idx, offset
+        return prob, gtlines, a_idx, d_idx, offset
 
     def __getitem__(self, idx):
 
@@ -126,11 +126,11 @@ class Train_Dataset_SEL(Dataset):
 
         img = self.get_image(idx, flip)
 
-        score, gtlines, a_idx, d_idx, offset = self.get_transformed_label(idx, flip)
+        prob, gtlines, a_idx, d_idx, offset = self.get_transformed_label(idx, flip)
 
         return {'img_rgb': img,
                 'img': self.normalize(img),
-                'score': score,
+                'prob': prob,
                 'offset': offset,
                 'mul_gt': gtlines,
                 'img_name': self.img_list[idx],

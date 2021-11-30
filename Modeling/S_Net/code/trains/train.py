@@ -24,7 +24,7 @@ class Train_Process(object):
 
 
     def training(self):
-        loss_t = {'sum': 0, 'score': 0, 'off_a': 0, 'off_d': 0}
+        loss_t = {'sum': 0, 'prob': 0, 'off_a': 0, 'off_d': 0}
 
         # train start
         self.s_net.train()
@@ -34,7 +34,7 @@ class Train_Process(object):
 
             # load data
             img = batch['img'].cuda()
-            score = batch['score'].cuda()
+            prob = batch['prob'].cuda()
             offset = batch['offset'].cuda()
             img_name = batch['img_name'][0]
 
@@ -46,7 +46,7 @@ class Train_Process(object):
             # loss
             loss = self.loss_fn(
                 out=out,
-                gt_score=score,
+                gt_prob=prob,
                 gt_offset=offset)
 
             # optimize
@@ -56,7 +56,7 @@ class Train_Process(object):
 
 
             loss_t['sum'] += loss['sum'].item()
-            loss_t['score'] += loss['score'].item()
+            loss_t['prob'] += loss['prob'].item()
             loss_t['off_a'] += loss['off_a'].item()
             loss_t['off_d'] += loss['off_d'].item()
 
@@ -65,15 +65,15 @@ class Train_Process(object):
                 print('img iter %d ==> %s' % (i, img_name))
                 self.visualize.display_for_train_reg(batch, out, i)
                 if i % self.cfg.disp_step == 0:
-                    logger("%d %s ==> Loss : %5f, Loss_score : %5f, Loss_off_a : %5f, Loss_off_d : %5f\n"
-                           % (i, img_name, loss['sum'].item(), loss['score'].item(), loss['off_a'].item(), loss['off_d'].item()), self.logfile)
+                    logger("%d %s ==> Loss : %5f, Loss_prob : %5f, Loss_off_a : %5f, Loss_off_d : %5f\n"
+                           % (i, img_name, loss['sum'].item(), loss['prob'].item(), loss['off_a'].item(), loss['off_d'].item()), self.logfile)
 
         # logger
         logger("Average Loss : %5f %5f %5f %5f\n"
-               % (loss_t['sum'] / i, loss_t['score'] / i, loss_t['off_a'] / i, loss_t['off_d'] / i), self.logfile)
+               % (loss_t['sum'] / i, loss_t['prob'] / i, loss_t['off_a'] / i, loss_t['off_d'] / i), self.logfile)
 
         print("Average Loss : %5f %5f %5f %5f\n"
-               % (loss_t['sum'] / i, loss_t['score'] / i, loss_t['off_a'] / i, loss_t['off_d'] / i))
+               % (loss_t['sum'] / i, loss_t['prob'] / i, loss_t['off_a'] / i, loss_t['off_d'] / i))
 
         # save model
         self.ckpt = {'epoch': self.epoch,

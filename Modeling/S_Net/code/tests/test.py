@@ -49,7 +49,7 @@ class Test_Process(object):
                                                     idx=i, mode=mode, dataset_name=dataset_name)
 
                 # record output data
-                result['out']['pos_idx'] = (out_f['score'][0] > 0.5).nonzero()[:, 1]
+                result['out']['pos_idx'] = (out_f['prob'][0] > 0.5).nonzero()[:, 1]
                 result['out']['mul'] = to_tensor(out_f['out_pts_cls'])
                 result['out']['mul_reg'] = to_tensor(out_f['out_pts_reg'])
                 result['gt']['mul'] = mul_gt

@@ -119,7 +119,7 @@ class Evaluation_HIoU(nn.Module):
             if region_mask.shape[0] != 0:
                 self.visualize_separate_region(mask=region_mask[0],
                                                line_pts=line_pts[0],
-                                               dir_name=self.cfg.dir['out'] + 'New_IoU/vis_check/region_mask/',
+                                               dir_name=self.cfg.dir['out'] + 'HIoU/vis_check/region_mask/',
                                                file_name='region.jpg')
         output['region_mask'] = region_mask
 
@@ -136,7 +136,7 @@ class Evaluation_HIoU(nn.Module):
 
         return iou
 
-    def measure_new_metric(self, pred, gt):
+    def measure_hiou_metric(self, pred, gt):
 
         m = len(pred)
         n = len(gt)
@@ -208,7 +208,7 @@ class Evaluation_HIoU(nn.Module):
             pred_inter_mask = self.generate_inter_region_mask(pred_mask['region_mask'])
             gt_inter_mask = self.generate_inter_region_mask(gt_mask['region_mask'])
 
-            result['IOU'] = self.measure_new_metric(pred_inter_mask, gt_inter_mask)
+            result['IOU'] = self.measure_hiou_metric(pred_inter_mask, gt_inter_mask)
 
             if self.cfg.disp_hiou == True:
                 self.visualize_inter_region(pred_inter_mask, gt_inter_mask)
@@ -249,7 +249,7 @@ class Evaluation_HIoU(nn.Module):
         blank = np.full((self.cfg.height, 5, 3), 255, dtype=np.int32)
         total = np.concatenate((pred_img, blank, gt_img), axis=1)
 
-        file_dir = self.cfg.dir['out'] + 'New_IoU/vis_real_revised_v2/'
+        file_dir = self.cfg.dir['out'] + 'HIoU/vis/'
         mkdir(file_dir)
 
         cv2.imwrite(file_dir + self.img_name + '_total.jpg', total)
@@ -284,7 +284,7 @@ class Evaluation_HIoU(nn.Module):
 
         total = np.concatenate((pred_vis, blank, gt_vis), axis=1)
 
-        file_dir = self.cfg.dir['out'] + 'New_IoU/vis_segmap/'
+        file_dir = self.cfg.dir['out'] + 'HIoU/vis_segmap/'
         mkdir(file_dir)
 
         cv2.imwrite(file_dir + self.img_name + '_total.jpg', total)
