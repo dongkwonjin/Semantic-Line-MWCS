@@ -7,7 +7,7 @@
 -->
 
 Official implementation for **"Harmonious Semantic Line Detection via Maximal Weight Clique Selection"** 
-[[paper]](https://openaccess.thecvf.com/content/CVPR2021/papers/Jin_Harmonious_Semantic_Line_Detection_via_Maximal_Weight_Clique_Selection_CVPR_2021_paper.pdf) [[video]](https://youtu.be/lfusaTl_N-E).
+[[paper]](https://openaccess.thecvf.com/content/CVPR2021/papers/Jin_Harmonious_Semantic_Line_Detection_via_Maximal_Weight_Clique_Selection_CVPR_2021_paper.pdf) [[supp]](http://mcl.korea.ac.kr/~dkjin/cvpr2021/04585-supp.pdf) [[video]](https://youtu.be/lfusaTl_N-E).
 
 ### Requirements
 - PyTorch >= 1.3.1
