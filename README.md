@@ -10,7 +10,7 @@ Official implementation for **"Harmonious Semantic Line Detection via Maximal We
 [[paper]](https://openaccess.thecvf.com/content/CVPR2021/papers/Jin_Harmonious_Semantic_Line_Detection_via_Maximal_Weight_Clique_Selection_CVPR_2021_paper.pdf) [[supp]](http://mcl.korea.ac.kr/~dkjin/cvpr2021/04585-supp.pdf) [[video]](https://www.youtube.com/watch?v=CFQ168_6jw8) [[arxiv]](https://arxiv.org/abs/2104.06903).
 
 ### Video
-<a href="https://www.youtube.com/watch?v=CFQ168_6jw8" target="_blank"><img src="https://img.youtube.com/vi/CFQ168_6jw8/0.jpg" alt="Video" width="430" height="240" border="10" /></a>
+<a href="https://www.youtube.com/watch?v=CFQ168_6jw8" target="_blank"><img src="https://img.youtube.com/vi/CFQ168_6jw8/0.jpg" alt="Video" width="30%" height="30%" border="10" /></a>
 
 
 
